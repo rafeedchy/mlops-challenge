@@ -9,3 +9,7 @@ __pycache__/
 # OS/editor
 .DS_Store
 .vscode/
+mlruns/
+runs/
+logs/
+artifacts/
