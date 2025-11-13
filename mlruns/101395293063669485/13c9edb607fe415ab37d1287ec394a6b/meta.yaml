@@ -1,0 +1,15 @@
+artifact_uri: file:///home/rafeed/Documents/rafeed/CV/aibidia-skill-challange/mlops-challenge/mlruns/101395293063669485/13c9edb607fe415ab37d1287ec394a6b/artifacts
+end_time: 1763030572317
+entry_point_name: ''
+experiment_id: '101395293063669485'
+lifecycle_stage: active
+run_id: 13c9edb607fe415ab37d1287ec394a6b
+run_name: train_20251113_104252
+run_uuid: 13c9edb607fe415ab37d1287ec394a6b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763030572300
+status: 3
+tags: []
+user_id: rafeed
