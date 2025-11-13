@@ -38,7 +38,7 @@ class Rolling:
         return [sum(c)/len(c) for c in cols]
 
 def drift_proxy(baseline_means, current_means) -> float:
-    # average relative mean shift; simple & fast to compute
+    # average relative mean shift
     eps = 1e-6
     diffs = [abs(c - b) / (abs(b) + eps) for b, c in zip(baseline_means, current_means)]
     return float(sum(diffs) / len(diffs))
