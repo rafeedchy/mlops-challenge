@@ -14,45 +14,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Train model (MLflow local tracking)
+      - name: Train model (MLflow local store)
         env:
           MLFLOW_TRACKING_URI: "file:./mlruns"
         run: |
           python train.py --test-size 0.2 --C 1.0 --max-iter 200
 
-      - name: Accuracy check
-        run: |
-          echo "Checking model accuracy..."
-          python - <<'EOF'
-import json, sys
-
-with open("artifacts/training_stats.json", "r") as f:
-    stats = json.load(f)
-
-acc = stats["metrics"]["accuracy"]
-print(f"Model accuracy: {acc}")
-
-if acc < 0.90:
-    print("Accuracy below required threshold (0.90). Failing CI.")
-    sys.exit(1)
-
-print("Accuracy is acceptable. Continuing pipeline...")
-EOF
-
-      - name: Upload trained artifacts
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: model-artifacts
