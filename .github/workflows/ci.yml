@@ -27,9 +27,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Train model
+      - name: Train model (MLflow local store)
+        env:
+          MLFLOW_TRACKING_URI: "file:./mlruns"
         run: |
-          export MLFLOW_TRACKING_URI="file:./mlruns"
           python train.py --test-size 0.2 --C 1.0 --max-iter 200
 
       - name: Upload artifacts
